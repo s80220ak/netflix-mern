@@ -36,7 +36,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
 
   const drawer = (
     <>
-      <Toolbar sx={{ paddongY: "20px", color: "text.primary" }}>
+      <Toolbar sx={{ paddngY: "20px", color: "text.primary" }}>
         <Stack width="100%" direction="row" justifyContent="center">
           <Logo />
         </Stack>

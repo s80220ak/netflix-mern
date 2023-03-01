@@ -11,6 +11,11 @@ const create = async (req, res) => {
       ...req.body,
     });
 
+    console.log(review);
+    const a = {
+      ...review._doc,
+    };
+    console.log(a);
     await review.save();
 
     responseHandler.created(res, {
@@ -32,9 +37,9 @@ const remove = async (req, res) => {
       user: req.user.id,
     });
 
-    if (!review) return responseHandler.nofound(res);
+    if (!review) return responseHandler.notfound(res);
 
-    await review.save();
+    await review.remove();
 
     responseHandler.ok(res);
   } catch {

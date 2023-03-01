@@ -33,6 +33,7 @@ const PersonMediaGrid = ({ personId }) => {
       media.media_type === tmdbConfigs.mediaType.movie
         ? new Date(media.release_date)
         : new Date(media.first_air_date);
+
     return date.getTime();
   };
 

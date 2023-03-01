@@ -48,6 +48,8 @@ const signin = async (req, res) => {
     user.password = undefined;
     user.salt = undefined;
 
+    const a = { token, ...user._doc, id: user.id };
+
     responseHandler.created(res, { token, ...user._doc, id: user.id });
   } catch {
     responseHandler.error(res);

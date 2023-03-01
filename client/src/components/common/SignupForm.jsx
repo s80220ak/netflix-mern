@@ -38,11 +38,11 @@ const SignupForm = ({ switchAuthState }) => {
         .required("confirmPassword is required."),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       setErrorMessage(undefined);
       setIsLoginRequest(true);
 
       const { response, err } = await userApi.signup(values);
+
       setIsLoginRequest(false);
 
       if (response) {

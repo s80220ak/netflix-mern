@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 import { colors } from "@mui/material";
-import { dark } from "@mui/material/styles/createPalette";
 
 export const themeModes = {
   dark: "dark",
@@ -13,16 +12,16 @@ const themeConfigs = {
       mode === themeModes.dark
         ? {
             primary: {
-              main: "#ff0000",
-              contrastText: "#ffffff",
+              main: "#ff0000", //紅
+              contrastText: "#ffffff", //白
             },
             secondary: {
-              main: "#f44336",
+              main: "#f44336", //淡紅
               contrastText: "#ffffff",
             },
             background: {
-              default: "#000000",
-              paper: "#131313",
+              default: "#000000", //黑
+              paper: "#131313", //黑2
             },
           }
         : {

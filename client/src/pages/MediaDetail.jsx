@@ -31,17 +31,14 @@ import MediaReview from "../components/common/MediaReview";
 
 const MediaDetail = () => {
   const { mediaType, mediaId } = useParams();
-
+  const dispatch = useDispatch();
+  const videoRef = useRef(null);
   const { user, listFavorites } = useSelector((state) => state.user);
 
   const [media, setMedia] = useState();
   const [isFavorite, setIsFavorite] = useState(false);
   const [onRequest, setOnRequest] = useState(false);
   const [genres, setGenres] = useState([]);
-
-  const dispatch = useDispatch();
-
-  const videoRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,8 +49,6 @@ const MediaDetail = () => {
         mediaId,
       });
       dispatch(setGlobalLoading(false));
-
-      console.log(response);
 
       if (response) {
         setMedia(response);
@@ -170,8 +165,8 @@ const MediaDetail = () => {
                 >
                   {`${media.title || media.name} ${
                     mediaType === tmdbConfigs.mediaType.movie
-                      ? media.release_date.split("_")[0]
-                      : media.first_air_date.split("_")[0]
+                      ? media.release_date.split("-")[0]
+                      : media.first_air_date.split("-")[0]
                   }`}
                 </Typography>
                 {/** title */}

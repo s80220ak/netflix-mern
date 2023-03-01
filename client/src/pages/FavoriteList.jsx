@@ -80,8 +80,7 @@ const FavoriteList = () => {
   const onLoadMore = () => {
     setFilteredMedias([
       ...filteredMedias,
-      ...[...medias].splice(page * skip),
-      skip,
+      ...[...medias].splice(page * skip, skip),
     ]);
     setPage(page + 1);
   };

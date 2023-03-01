@@ -29,13 +29,11 @@ const SigninForm = ({ switchAuthState }) => {
         .required("password is required."),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       setErrorMessage(undefined);
       setIsLoginRequest(true);
 
       const { response, err } = await userApi.signin(values);
       setIsLoginRequest(false);
-      console.log(response);
 
       if (response) {
         signinForm.resetForm();
@@ -58,6 +56,7 @@ const SigninForm = ({ switchAuthState }) => {
           fullWidth
           value={signinForm.values.username}
           onChange={signinForm.handleChange}
+          onBlur={signinForm.handleBlur}
           color="success"
           error={
             signinForm.touched.username &&
@@ -72,6 +71,7 @@ const SigninForm = ({ switchAuthState }) => {
           fullWidth
           value={signinForm.values.password}
           onChange={signinForm.handleChange}
+          onBlur={signinForm.handleBlur}
           color="success"
           error={
             signinForm.touched.password &&

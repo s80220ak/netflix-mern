@@ -31,10 +31,10 @@ const MediaItem = ({ media, mediaType }) => {
     );
 
     if (mediaType === tmdbConfigs.mediaType.movie) {
-      setReleaseDate(media.release_date && media.release_date.split("_")[0]);
+      setReleaseDate(media.release_date && media.release_date.split("-")[0]);
     } else {
       setReleaseDate(
-        media.first_air_date && media.first_air_date.split("_")[0]
+        media.first_air_date && media.first_air_date.split("-")[0]
       );
     }
 
@@ -52,7 +52,8 @@ const MediaItem = ({ media, mediaType }) => {
       <Box
         sx={{
           ...uiConfigs.style.backgroundImage(posterPath),
-          paddingTop: "160%",
+          marginX: "0.5rem",
+          paddingTop: "140%",
           "&:hover .media-info": { opacity: 1, bottom: 0 },
           "&:hover .media-back-drop, &:hover .media-play-btn": { opacity: 1 },
           color: "primary.contrastText",
@@ -120,7 +121,7 @@ const MediaItem = ({ media, mediaType }) => {
                 <Typography>{releaseDate}</Typography>
 
                 <Typography
-                  varient="body1"
+                  variant="body1"
                   fontWeight="700"
                   sx={{
                     fontSize: "1rem",
@@ -136,7 +137,7 @@ const MediaItem = ({ media, mediaType }) => {
         {/** movie or tv item */}
 
         {/** people */}
-        {mediaType && "people" && (
+        {mediaType === "people" && (
           <Box
             sx={{
               position: "absolute",

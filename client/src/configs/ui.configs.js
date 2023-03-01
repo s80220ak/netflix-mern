@@ -1,5 +1,3 @@
-import { textAlign } from "@mui/system";
-
 const uiConfigs = {
   style: {
     gradientBgImage: {
@@ -35,7 +33,8 @@ const uiConfigs = {
     },
     backgroundImage: (imgPath) => ({
       position: "relative",
-      backgroundSize: "cover",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
       baclgroundPosition: "center",
       backgroundColor: "darkgery",
       backgroundImage: `url(${imgPath})`,

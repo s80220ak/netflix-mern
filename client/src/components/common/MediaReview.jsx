@@ -43,9 +43,9 @@ const ReviewItem = ({ review, onRemoved }) => {
       }}
     >
       <Stack direction="row" spacing={2}>
-        {/** avater */}
+        {/* avater */}
         <TextAvatar text={review.user.displayName} />
-        {/** avater */}
+        {/* avater */}
         <Stack spacing={2} flexGrow={1}>
           <Stack spacing={1}>
             <Typography variant="h6" fontWeight="700">
@@ -83,6 +83,7 @@ const ReviewItem = ({ review, onRemoved }) => {
 
 const MediaReview = ({ reviews, media, mediaType }) => {
   const { user } = useSelector((state) => state.user);
+
   const [listReviews, setListReviews] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [page, setPage] = useState(1);

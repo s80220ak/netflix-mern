@@ -8,7 +8,7 @@ import uiConfigs from "../configs/ui.configs";
 
 const mediaTypes = ["movie", "tv", "people"];
 let timer;
-const timeout = 500;
+const timeout = 1000;
 
 const MediaSearch = () => {
   const [query, setQuery] = useState("");
@@ -31,22 +31,11 @@ const MediaSearch = () => {
     }
   }, [mediaType, query, page]);
 
-  useEffect(() => {
-    if (query.trim().length === 0) {
-      setMedias([]);
-      setPage(1);
-    } else search();
-  }, [search, query, mediaType, page]);
-
-  useEffect(() => {
-    setMedias([]);
-    setPage(1);
-  }, [mediaType]);
-
   const onCategoryChange = (selectedCategory) => setMediaType(selectedCategory);
 
   const onQueryChange = (e) => {
     const newQuery = e.target.value;
+
     clearTimeout(timer);
 
     timer = setTimeout(() => {
@@ -54,11 +43,18 @@ const MediaSearch = () => {
     }, timeout);
   };
 
+  useEffect(() => {
+    if (query.trim().length === 0) {
+      setMedias([]);
+      setPage(1);
+    } else search();
+  }, [search, query, mediaType, page]);
+
   return (
     <>
       <Toolbar />
       <Box sx={{ ...uiConfigs.style.mainContent }}>
-        <Stack spacing={2}>
+        <Stack spacing={2} alignItems="center">
           <Stack
             spacing={2}
             direction="row"
@@ -85,7 +81,7 @@ const MediaSearch = () => {
           <TextField
             color="success"
             placeholder="Search..."
-            sx={{ width: "100%" }}
+            sx={{ width: "50%" }}
             autoFocus
             onChange={onQueryChange}
           />

@@ -41,8 +41,6 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
         page: 1,
       });
 
-      console.log(response);
-
       if (response) setMovies(response.results);
       if (err) toast.error(err.message);
       dispatch(setGlobalLoading(false));
@@ -54,6 +52,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
 
       if (response) {
         setGenres(response.genres);
+
         getMedias();
       }
       if (err) {
@@ -86,9 +85,9 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
       <Swiper
         grabCursor={true}
         loop={true}
-        // modules={[Autoplay]}
+        modules={[Autoplay]}
         style={{ width: "100%", height: "max-content" }}
-        // autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>

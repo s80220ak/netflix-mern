@@ -14,13 +14,12 @@ import { toast } from "react-toastify";
 
 const MediaList = () => {
   const { mediaType } = useParams();
+  const dispatch = useDispatch();
 
   const [medias, setMedias] = useState([]);
   const [mediaLoading, setMediaLoading] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-
-  const dispatch = useDispatch();
 
   const mediaCategories = useMemo(() => ["popular", "top_rated"], []);
   const category = ["popular", "top rated"];
