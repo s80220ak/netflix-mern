@@ -11,11 +11,10 @@ const create = async (req, res) => {
       ...req.body,
     });
 
-    console.log(review);
     const a = {
       ...review._doc,
     };
-    console.log(a);
+
     await review.save();
 
     responseHandler.created(res, {
