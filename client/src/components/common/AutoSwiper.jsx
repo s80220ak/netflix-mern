@@ -6,10 +6,10 @@ const AutoSwiper = ({ children }) => {
     <Box
       sx={{
         "& .swiper-slide": {
-          width: { xs: "40%", md: "20%" },
+          width: { xs: "38%", md: "15%" },
         },
         "& .swiper": {
-          width: { xs: "115%" },
+          width: { xs: "120%" },
           height: "max-content",
         },
       }}

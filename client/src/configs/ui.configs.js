@@ -33,8 +33,7 @@ const uiConfigs = {
     },
     backgroundImage: (imgPath) => ({
       position: "relative",
-      backgroundSize: "contain",
-      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
       baclgroundPosition: "center",
       backgroundColor: "darkgery",
       backgroundImage: `url(${imgPath})`,
