@@ -4,8 +4,11 @@ import Container from "./Container";
 import Logo from "./Logo";
 import menuConfigs from "../../configs/menu.configs";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Paper square={true} sx={{ backgroundImage: "unset", padding: "2rem" }}>
@@ -24,7 +27,7 @@ const Footer = () => {
                 component={Link}
                 to={item.path}
               >
-                {item.display}
+                {t(item.display)}
               </Button>
             ))}
           </Box>

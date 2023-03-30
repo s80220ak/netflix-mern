@@ -1,0 +1,11 @@
+{
+  "movies": "movie",
+  "signin": "signin",
+  "home": "home",
+  "tv series": "tv series",
+  "search": "search",
+  "favorites": "favorites",
+  "reviews": "reviews",
+  "password update": "password update",
+  "signout": "sign out"
+}

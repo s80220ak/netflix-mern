@@ -11,9 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import menuConfigs from "../../configs/menu.configs";
 import { setUser } from "../../redux/features/userSlice";
+import { useTranslation } from "react-i18next";
 
 const UserMenu = () => {
   const { user } = useSelector((state) => state.user);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -52,7 +54,7 @@ const UserMenu = () => {
                   disableTypography
                   primary={
                     <Typography textTransform="uppercase">
-                      {item.display}
+                      {t(item.display)}
                     </Typography>
                   }
                 />
@@ -68,7 +70,9 @@ const UserMenu = () => {
               <ListItemText
                 disableTypography
                 primary={
-                  <Typography textTransform="uppercase">sign out</Typography>
+                  <Typography textTransform="uppercase">
+                    {t("signout")}
+                  </Typography>
                 }
               />
             </ListItemButton>

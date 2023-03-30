@@ -19,7 +19,9 @@ import { setAuthModalOpen } from "../../redux/features/authModalSlice";
 import { setThemeMode } from "../../redux/features/themeModeSlice";
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
+import LanguageSwitch from "./LanguageSwitch";
 import Sidebar from "./Sidebar";
+import { useTranslation } from "react-i18next";
 
 const ScrollAppBar = ({ children, window }) => {
   const { themeMode } = useSelector((state) => state.themeMode);
@@ -50,6 +52,8 @@ const Topbar = () => {
   const { user } = useSelector((state) => state.user);
   const { appState } = useSelector((state) => state.appState);
   const { themeMode } = useSelector((state) => state.themeMode);
+
+  const { t } = useTranslation();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -107,7 +111,7 @@ const Topbar = () => {
                   to={item.path}
                   variant={appState.includes(item.state) ? "contained" : "text"}
                 >
-                  {item.display}
+                  {t(item.display)}
                 </Button>
               ))}
               <IconButton sx={{ color: "inherit" }} onClick={onSwitchTheme}>
@@ -120,6 +124,7 @@ const Topbar = () => {
             {/* user menu */}
 
             <Stack spacing={3} direction="row" alignItems="center">
+              <LanguageSwitch />
               {user ? (
                 <UserMenu />
               ) : (
@@ -127,7 +132,7 @@ const Topbar = () => {
                   variant="contained"
                   onClick={() => dispatch(setAuthModalOpen(true))}
                 >
-                  sign in
+                  {t("signin")}
                 </Button>
               )}
             </Stack>

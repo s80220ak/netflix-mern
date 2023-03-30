@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import uiConfigs from "../../configs/ui.configs";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -25,6 +26,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
   const { user } = useSelector((state) => state.user);
   const { appState } = useSelector((state) => state.appState);
   const { themeMode } = useSelector((state) => state.themeMode);
+  const { t } = useTranslation();
 
   const sidebarWidth = uiConfigs.size.sidebarWidth;
 
@@ -64,7 +66,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
               disableTypography
               primary={
                 <Typography textTransform="uppercase">
-                  {item.display}
+                  {t(item.display)}
                 </Typography>
               }
             />
@@ -95,7 +97,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
                   disableTypography
                   primary={
                     <Typography textTransform="uppercase">
-                      {item.display}
+                      {t(item.display)}
                     </Typography>
                   }
                 />

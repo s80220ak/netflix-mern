@@ -9,7 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -28,6 +28,7 @@ import mediaApi from "../../api/modules/media.api";
 
 const HeroSlide = ({ mediaType, mediaCategory }) => {
   const theme = useTheme();
+  const { language } = useSelector((state) => state.language);
   const dispatch = useDispatch();
 
   const [movies, setMovies] = useState([]);
@@ -38,6 +39,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
       const { response, err } = await mediaApi.getList({
         mediaType,
         mediaCategory,
+        language: language,
         page: 1,
       });
 
@@ -62,7 +64,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
     };
 
     getGenres();
-  }, [mediaType, mediaCategory, dispatch]);
+  }, [mediaType, mediaCategory, language, dispatch]);
 
   return (
     <Box

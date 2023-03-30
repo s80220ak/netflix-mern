@@ -60,7 +60,7 @@ const routes = [
         <ReviewList />
       </ProtectedPage>
     ),
-    state: "reivews",
+    state: "reviews",
   },
   {
     path: "/:mediaType",

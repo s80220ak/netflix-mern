@@ -6,6 +6,7 @@ import authModalSlice from "./features/authModalSlice";
 import globalLoadingSlice from "./features/globalLoadingSlice";
 import themeModeSlice from "./features/themeModeSlice";
 import userSlice from "./features/userSlice";
+import languageSlice from "./features/languageSlice";
 
 const persistConfig = {
   key: "root",
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   authModal: authModalSlice,
   globalLoading: globalLoadingSlice,
   appState: appStateSlice,
+  language: languageSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
