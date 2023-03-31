@@ -114,16 +114,19 @@ const Topbar = () => {
                   {t(item.display)}
                 </Button>
               ))}
-              <IconButton sx={{ color: "inherit" }} onClick={onSwitchTheme}>
-                {themeMode === themeModes.dark && <DarkModeOutlinedIcon />}
-                {themeMode === themeModes.light && <WbSunnyOutlinedIcon />}
-              </IconButton>
             </Box>
             {/* main menu */}
 
             {/* user menu */}
 
             <Stack spacing={3} direction="row" alignItems="center">
+              <IconButton
+                sx={{ color: "inherit", display: { xs: "none", md: "flex" } }}
+                onClick={onSwitchTheme}
+              >
+                {themeMode === themeModes.dark && <DarkModeOutlinedIcon />}
+                {themeMode === themeModes.light && <WbSunnyOutlinedIcon />}
+              </IconButton>
               <LanguageSwitch />
               {user ? (
                 <UserMenu />

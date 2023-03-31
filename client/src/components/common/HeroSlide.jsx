@@ -50,7 +50,10 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
 
     const getGenres = async () => {
       dispatch(setGlobalLoading(true));
-      const { response, err } = await genreApi.getList({ mediaType });
+      const { response, err } = await genreApi.getList({
+        mediaType,
+        language: language,
+      });
 
       if (response) {
         setGenres(response.genres);
@@ -74,7 +77,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
         "&::before": {
           content: '""',
           width: "100%",
-          height: "30%",
+          height: "5%",
           position: "absolute",
           bottom: 0,
           left: 0,
@@ -95,7 +98,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
           <SwiperSlide key={index}>
             <Box
               sx={{
-                paddingTop: { xs: "130%", sm: "80%", md: "60%", lg: "45%" },
+                paddingTop: { xs: "130%", sm: "80%", md: "60%", lg: "40%" },
                 backgroundPosition: "top",
                 backgroundSize: "cover",
                 backgroundImage: `url(${tmdbConfigs.backdropPath(

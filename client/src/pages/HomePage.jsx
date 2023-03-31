@@ -5,8 +5,11 @@ import tmdbConfigs from "../api/configs/tmdb.config";
 import { Box } from "@mui/material";
 import uiConfigs from "../configs/ui.configs";
 import Container from "../components/common/Container";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <HeroSlide
@@ -15,28 +18,28 @@ const HomePage = () => {
       />
 
       <Box marginTop="-4rem" sx={{ ...uiConfigs.style.mainContent }}>
-        <Container header="popular movies">
+        <Container header={t("popular movies")}>
           <MediaSlide
             mediaType={tmdbConfigs.mediaType.movie}
             mediaCategory={tmdbConfigs.mediaCategory.popular}
           />
         </Container>
 
-        <Container header="popular series">
+        <Container header={t("popular series")}>
           <MediaSlide
             mediaType={tmdbConfigs.mediaType.tv}
             mediaCategory={tmdbConfigs.mediaCategory.popular}
           />
         </Container>
 
-        <Container header="top rated movies">
+        <Container header={t("top rated movies")}>
           <MediaSlide
             mediaType={tmdbConfigs.mediaType.movie}
             mediaCategory={tmdbConfigs.mediaCategory.top_rated}
           />
         </Container>
 
-        <Container header="top rated series">
+        <Container header={t("top rated series")}>
           <MediaSlide
             mediaType={tmdbConfigs.mediaType.tv}
             mediaCategory={tmdbConfigs.mediaCategory.popular}

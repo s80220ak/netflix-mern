@@ -4,30 +4,32 @@ const tmdbEndpoints = {
   mediaList: ({ mediaType, mediaCategory, language, page }) =>
     tmdbConfig.getURL(`${mediaType}/${mediaCategory}`, { language, page }),
 
-  mediaDetail: ({ mediaType, mediaId }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}`),
+  mediaDetail: ({ mediaType, mediaId, language }) =>
+    tmdbConfig.getURL(`${mediaType}/${mediaId}`, { language }),
 
-  mediaGenres: ({ mediaType }) => tmdbConfig.getURL(`genre/${mediaType}/list`),
+  mediaGenres: ({ mediaType, language }) =>
+    tmdbConfig.getURL(`genre/${mediaType}/list`, { language }),
 
-  mediaCredits: ({ mediaType, mediaId }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}/credits`),
+  mediaCredits: ({ mediaType, mediaId, language }) =>
+    tmdbConfig.getURL(`${mediaType}/${mediaId}/credits`, { language }),
 
-  mediaVideos: ({ mediaType, mediaId }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}/videos`),
+  mediaVideos: ({ mediaType, mediaId, language }) =>
+    tmdbConfig.getURL(`${mediaType}/${mediaId}/videos`, { language }),
 
-  mediaRecommend: ({ mediaType, mediaId }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}/recommendations`),
+  mediaRecommend: ({ mediaType, mediaId, language }) =>
+    tmdbConfig.getURL(`${mediaType}/${mediaId}/recommendations`, { language }),
 
-  mediaImages: ({ mediaType, mediaId }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}/images`),
+  mediaImages: ({ mediaType, mediaId, language }) =>
+    tmdbConfig.getURL(`${mediaType}/${mediaId}/images`, { language }),
 
   mediaSearch: ({ mediaType, query, page }) =>
     tmdbConfig.getURL(`search/${mediaType}`, { query, page }),
 
-  personDetail: ({ personId }) => tmdbConfig.getURL(`person/${personId}`),
+  personDetail: ({ personId, language }) =>
+    tmdbConfig.getURL(`person/${personId}`, { language }),
 
-  personMedia: ({ personId }) =>
-    tmdbConfig.getURL(`person/${personId}/combined_credits`),
+  personMedia: ({ personId, language }) =>
+    tmdbConfig.getURL(`person/${personId}/combined_credits`, { language }),
 };
 
 export default tmdbEndpoints;

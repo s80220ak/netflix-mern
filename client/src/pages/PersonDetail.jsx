@@ -1,24 +1,35 @@
 import { Box, Toolbar, Typography, Stack } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import PersonMediaGrid from "../components/common/PersonMediaGrid";
 import tmdbConfigs from "../api/configs/tmdb.config";
 import uiConfigs from "../configs/ui.configs";
-import Container from "../components/common/Container";
-import personApi from "../api/modules/person.api";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
+
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import PersonMediaGrid from "../components/common/PersonMediaGrid";
+import Container from "../components/common/Container";
+
+import personApi from "../api/modules/person.api";
 import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
 
 const PersonDetail = () => {
   const { personId } = useParams();
+  const { language } = useSelector((state) => state.language);
+  const { t } = useTranslation();
+
   const [person, setPerson] = useState();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const getPerson = async () => {
       dispatch(setGlobalLoading(true));
-      const { response, err } = await personApi.detail({ personId });
+      const { response, err } = await personApi.detail({
+        personId,
+        language: language,
+      });
       dispatch(setGlobalLoading(false));
 
       if (err) toast.error(err.message);
@@ -75,7 +86,7 @@ const PersonDetail = () => {
               </Stack>
             </Box>
           </Box>
-          <Container header="medias">
+          <Container header={t("medias")}>
             <PersonMediaGrid personId={personId} />
           </Container>
         </Box>

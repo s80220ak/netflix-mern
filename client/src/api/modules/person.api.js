@@ -1,15 +1,16 @@
 import publicClient from "../client/public.client.js";
 
 const personEndpoints = {
-  detail: ({ personId }) => `person/${personId}`,
-  medias: ({ personId }) => `person/${personId}/medias`,
+  detail: ({ personId, language }) => `person/${personId}?language=${language}`,
+  medias: ({ personId, language }) =>
+    `person/${personId}/medias?language=${language}`,
 };
 
 const personApi = {
-  detail: async ({ personId }) => {
+  detail: async ({ personId, language }) => {
     try {
       const response = await publicClient.get(
-        personEndpoints.detail({ personId })
+        personEndpoints.detail({ personId, language })
       );
 
       return { response };
@@ -17,10 +18,10 @@ const personApi = {
       return { err };
     }
   },
-  medias: async ({ personId }) => {
+  medias: async ({ personId, language }) => {
     try {
       const response = await publicClient.get(
-        personEndpoints.medias({ personId })
+        personEndpoints.medias({ personId, language })
       );
 
       return { response };

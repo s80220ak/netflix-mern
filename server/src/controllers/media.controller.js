@@ -25,9 +25,10 @@ const getList = async (req, res) => {
 
 const getGenres = async (req, res) => {
   try {
+    const { language } = req.query;
     const { mediaType } = req.params;
 
-    const response = await tmdbApi.mediaGenres({ mediaType });
+    const response = await tmdbApi.mediaGenres({ mediaType, language });
 
     return responseHandler.ok(res, response);
   } catch {
@@ -54,8 +55,9 @@ const search = async (req, res) => {
 
 const getDetail = async (req, res) => {
   try {
+    const { language } = req.query;
     const { mediaType, mediaId } = req.params;
-    const params = { mediaType, mediaId };
+    const params = { mediaType, mediaId, language };
 
     const media = await tmdbApi.mediaDetail(params);
 

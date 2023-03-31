@@ -7,34 +7,44 @@ const tmdbApi = {
       tmdbEndpoints.mediaList({ mediaType, mediaCategory, language, page })
     ),
 
-  mediaDetail: async ({ mediaType, mediaId }) =>
-    await axiosClient.get(tmdbEndpoints.mediaDetail({ mediaType, mediaId })),
+  mediaDetail: async ({ mediaType, mediaId, language }) =>
+    await axiosClient.get(
+      tmdbEndpoints.mediaDetail({ mediaType, mediaId, language })
+    ),
 
-  mediaGenres: async ({ mediaType }) =>
-    await axiosClient.get(tmdbEndpoints.mediaGenres({ mediaType })),
+  mediaGenres: async ({ mediaType, language }) =>
+    await axiosClient.get(tmdbEndpoints.mediaGenres({ mediaType, language })),
 
-  mediaCredits: async ({ mediaType, mediaId }) =>
-    await axiosClient.get(tmdbEndpoints.mediaCredits({ mediaType, mediaId })),
+  mediaCredits: async ({ mediaType, mediaId, language }) =>
+    await axiosClient.get(
+      tmdbEndpoints.mediaCredits({ mediaType, mediaId, language })
+    ),
 
-  mediaVideos: async ({ mediaType, mediaId }) =>
-    await axiosClient.get(tmdbEndpoints.mediaVideos({ mediaType, mediaId })),
+  mediaVideos: async ({ mediaType, mediaId, language }) =>
+    await axiosClient.get(
+      tmdbEndpoints.mediaVideos({ mediaType, mediaId, language })
+    ),
 
-  mediaImages: async ({ mediaType, mediaId }) =>
-    await axiosClient.get(tmdbEndpoints.mediaImages({ mediaType, mediaId })),
+  mediaImages: async ({ mediaType, mediaId, language }) =>
+    await axiosClient.get(
+      tmdbEndpoints.mediaImages({ mediaType, mediaId, language })
+    ),
 
-  mediaRecommend: async ({ mediaType, mediaId }) =>
-    await axiosClient.get(tmdbEndpoints.mediaRecommend({ mediaType, mediaId })),
+  mediaRecommend: async ({ mediaType, mediaId, language }) =>
+    await axiosClient.get(
+      tmdbEndpoints.mediaRecommend({ mediaType, mediaId, language })
+    ),
 
   mediaSearch: async ({ mediaType, query, page }) =>
     await axiosClient.get(
       tmdbEndpoints.mediaSearch({ mediaType, query, page })
     ),
 
-  personDetail: async ({ personId }) =>
-    axiosClient.get(tmdbEndpoints.personDetail({ personId })),
+  personDetail: async ({ personId, language }) =>
+    axiosClient.get(tmdbEndpoints.personDetail({ personId, language })),
 
-  personMedias: async ({ personId }) =>
-    axiosClient.get(tmdbEndpoints.personMedia({ personId })),
+  personMedias: async ({ personId, language }) =>
+    axiosClient.get(tmdbEndpoints.personMedia({ personId, language })),
 };
 
 export default tmdbApi;

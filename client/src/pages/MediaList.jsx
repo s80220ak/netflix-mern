@@ -1,7 +1,7 @@
 import { LoadingButton } from "@mui/lab";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useState, useEffect, useMemo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import tmdbConfigs from "../api/configs/tmdb.config";
 import mediaApi from "../api/modules/media.api";
@@ -11,10 +11,13 @@ import MediaGrid from "../components/common/MediaGrid";
 import { setAppState } from "../redux/features/appStateSlice";
 import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const MediaList = () => {
+  const { t } = useTranslation();
   const { mediaType } = useParams();
   const dispatch = useDispatch();
+  const { language } = useSelector((state) => state.language);
 
   const [medias, setMedias] = useState([]);
   const [mediaLoading, setMediaLoading] = useState(false);
@@ -37,6 +40,7 @@ const MediaList = () => {
       const { response, err } = await mediaApi.getList({
         mediaType,
         mediaCategory: mediaCategories[currentCategory],
+        language: language,
         page: currentPage,
       });
 
@@ -77,7 +81,9 @@ const MediaList = () => {
           sx={{ marginBottom: 4 }}
         >
           <Typography fontWeight="700" variant="h5">
-            {mediaType === tmdbConfigs.mediaType.movie ? "Movies" : "TV Series"}
+            {mediaType === tmdbConfigs.mediaType.movie
+              ? t("Movies")
+              : t("TV Series")}
           </Typography>
           <Stack direction="row" spacing={2}>
             {category.map((cate, index) => (
@@ -93,7 +99,7 @@ const MediaList = () => {
                 }}
                 onClick={() => onCategoryChange(index)}
               >
-                {cate}
+                {t(cate)}
               </Button>
             ))}
           </Stack>

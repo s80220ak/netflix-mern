@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 import Container from "./Container";
@@ -83,6 +84,7 @@ const ReviewItem = ({ review, onRemoved }) => {
 
 const MediaReview = ({ reviews, media, mediaType }) => {
   const { user } = useSelector((state) => state.user);
+  const { t } = useTranslation();
 
   const [listReviews, setListReviews] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
@@ -149,7 +151,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 
   return (
     <>
-      <Container header={`Reviews (${reviewCount})`}>
+      <Container header={`${t("Reviews")} (${reviewCount})`}>
         <Stack spacing={4} marginBottom={2}>
           {filteredReviews.map((item) => (
             <Box key={item.id}>

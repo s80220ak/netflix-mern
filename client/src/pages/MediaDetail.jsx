@@ -8,6 +8,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import CircularRate from "../components/common/CircularRate";
 import Container from "../components/common/Container";
@@ -17,6 +18,8 @@ import MediaVideosSlide from "../components/common/MediaVideosSlide";
 import BackdropSlide from "../components/common/BackdropSlide";
 import PosterSlide from "../components/common/PosterSlide";
 import RecommendSlide from "../components/common/RecommendSlide";
+import MediaSlide from "../components/common/MediaSlide";
+import MediaReview from "../components/common/MediaReview";
 
 import uiConfigs from "../configs/ui.configs";
 import tmdbConfigs from "../api/configs/tmdb.config";
@@ -26,14 +29,14 @@ import favoriteApi from "../api/modules/favorite.api";
 import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
 import { setAuthModalOpen } from "../redux/features/authModalSlice";
 import { addFavorite, removeFavorite } from "../redux/features/userSlice";
-import MediaSlide from "../components/common/MediaSlide";
-import MediaReview from "../components/common/MediaReview";
 
 const MediaDetail = () => {
   const { mediaType, mediaId } = useParams();
+  const { t } = useTranslation();
+  const { user, listFavorites } = useSelector((state) => state.user);
+  const { language } = useSelector((state) => state.language);
   const dispatch = useDispatch();
   const videoRef = useRef(null);
-  const { user, listFavorites } = useSelector((state) => state.user);
 
   const [media, setMedia] = useState();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -47,6 +50,7 @@ const MediaDetail = () => {
       const { response, err } = await mediaApi.getDetail({
         mediaType,
         mediaId,
+        language: language,
       });
       dispatch(setGlobalLoading(false));
 
@@ -228,7 +232,7 @@ const MediaDetail = () => {
                 {/** buttons */}
 
                 {/** cast */}
-                <Container header="Cast">
+                <Container header={t("Cast")}>
                   <CastSlide casts={media.credits.cast} />
                 </Container>
                 {/** cast */}
@@ -241,7 +245,7 @@ const MediaDetail = () => {
 
         {/** media videos */}
         <div ref={videoRef} style={{ paddingTop: "2rem" }}>
-          <Container header="Videos">
+          <Container header={t("Videos")}>
             <MediaVideosSlide videos={[...media.videos.results].splice(0, 5)} />
           </Container>
         </div>
@@ -249,7 +253,7 @@ const MediaDetail = () => {
 
         {/** media backdrop */}
         {media.images.backdrops.length > 0 && (
-          <Container header="backdrops">
+          <Container header={t("backdrops")}>
             <BackdropSlide backdrops={media.images.backdrops} />
           </Container>
         )}
@@ -257,7 +261,7 @@ const MediaDetail = () => {
 
         {/** media posters */}
         {media.images.posters.length > 0 && (
-          <Container header="posters">
+          <Container header={t("posters")}>
             <PosterSlide posters={media.images.posters} />
           </Container>
         )}
@@ -272,7 +276,7 @@ const MediaDetail = () => {
         {/** media reviews */}
 
         {/** media recommendation */}
-        <Container header="you might also like">
+        <Container header={t("you might also like")}>
           {media.recommend.length > 0 && (
             <RecommendSlide medias={media.recommend} mediaType={mediaType} />
           )}

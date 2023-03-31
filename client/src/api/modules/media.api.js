@@ -4,7 +4,8 @@ import publicClient from "../client/public.client.js";
 const mediaEndpoints = {
   list: ({ mediaType, mediaCategory, language, page }) =>
     `${mediaType}/${mediaCategory}?language=${language}&?page=${page}`,
-  detail: ({ mediaType, mediaId }) => `${mediaType}/detail/${mediaId}`,
+  detail: ({ mediaType, mediaId, language }) =>
+    `${mediaType}/detail/${mediaId}?language=${language}`,
   search: ({ mediaType, query, page }) =>
     `${mediaType}/search?query=${query}&page=${page}`,
 };
@@ -21,10 +22,10 @@ const mediaApi = {
       return { err };
     }
   },
-  getDetail: async ({ mediaType, mediaId }) => {
+  getDetail: async ({ mediaType, mediaId, language }) => {
     try {
       const response = await privateClient.get(
-        mediaEndpoints.detail({ mediaType, mediaId })
+        mediaEndpoints.detail({ mediaType, mediaId, language })
       );
 
       return { response };

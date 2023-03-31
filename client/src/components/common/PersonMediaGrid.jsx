@@ -1,19 +1,26 @@
 import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import tmdbConfigs from "../../api/configs/tmdb.config";
 import personApi from "../../api/modules/person.api";
 import MediaItem from "./MediaItem";
 import { toast } from "react-toastify";
 
 const PersonMediaGrid = ({ personId }) => {
+  const { language } = useSelector((state) => state.language);
+
   const [medias, setMedias] = useState([]);
   const [filteredMedias, setFilteredMedias] = useState([]);
   const [page, setPage] = useState(1);
+
   const skip = 8;
 
   useEffect(() => {
     const getMedias = async () => {
-      const { response, err } = await personApi.medias({ personId });
+      const { response, err } = await personApi.medias({
+        personId,
+        language: language,
+      });
 
       if (err) toast.error(err.message);
       if (response) {

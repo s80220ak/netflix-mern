@@ -7,5 +7,20 @@
   "favorites": "favorites",
   "reviews": "reviews",
   "password update": "password update",
-  "signout": "sign out"
+  "signout": "sign out",
+  "popular movies": "popular movies",
+  "popular series": "popular series",
+  "top rated movies": "top rated movies",
+  "top rated series": "top rated series",
+  "Movies": "Movies",
+  "TV Series": "TV Series",
+  "popular": "popular",
+  "top rated": "top rated",
+  "Cast": "Cast",
+  "Videos": "Videos",
+  "backdrops": "backdrops",
+  "posters": "posters",
+  "you might also like": "you might also like",
+  "Reviews": "Reviews",
+  "medias": "medias"
 }

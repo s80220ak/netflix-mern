@@ -3,8 +3,9 @@ import tmdbApi from "../tmdb/tmdb.api.js";
 
 const personDetail = async (req, res) => {
   try {
+    const { language } = req.query;
     const { personId } = req.params;
-    const person = await tmdbApi.personDetail({ personId });
+    const person = await tmdbApi.personDetail({ personId, language });
 
     responseHandler.ok(res, person);
   } catch {
@@ -14,8 +15,9 @@ const personDetail = async (req, res) => {
 
 const personMedias = async (req, res) => {
   try {
+    const { language } = req.query;
     const { personId } = req.params;
-    const medias = await tmdbApi.personMedias({ personId });
+    const medias = await tmdbApi.personMedias({ personId, language });
 
     responseHandler.ok(res, medias);
   } catch {
