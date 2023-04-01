@@ -2,6 +2,8 @@ import { LoadingButton } from "@mui/lab";
 import { Box, Button, Stack, TextField, Toolbar } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
 import mediaApi from "../api/modules/media.api";
 import MediaGrid from "../components/common/MediaGrid";
 import uiConfigs from "../configs/ui.configs";
@@ -16,6 +18,8 @@ const MediaSearch = () => {
   const [mediaType, setMediaType] = useState(mediaTypes[0]);
   const [medias, setMedias] = useState([]);
   const [page, setPage] = useState(1);
+
+  const { t } = useTranslation();
 
   const search = useCallback(async () => {
     setOnSearch(true);
@@ -74,7 +78,7 @@ const MediaSearch = () => {
                 }}
                 onClick={() => onCategoryChange(item)}
               >
-                {item}
+                {t(item)}
               </Button>
             ))}
           </Stack>

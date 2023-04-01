@@ -2,7 +2,7 @@
   "movies": "電影",
   "signin": "登入",
   "home": "首頁",
-  "tv series": "電視節目",
+  "tv series": "影集節目",
   "search": "搜尋",
   "favorites": "待看清單",
   "reviews": "評論紀錄",
@@ -27,5 +27,8 @@
   "remove": "移除",
   "Your reviews": "你的評論",
   "sign in": "登入",
-  "sign up": "註冊"
+  "sign up": "註冊",
+  "movie": "電影",
+  "tv": "影集節目",
+  "people": "演員"
 }
