@@ -77,7 +77,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
         "&::before": {
           content: '""',
           width: "100%",
-          height: "5%",
+          height: "20%",
           position: "absolute",
           bottom: 0,
           left: 0,

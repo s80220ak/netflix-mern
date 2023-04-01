@@ -17,7 +17,11 @@ const HomePage = () => {
         mediaCategory={tmdbConfigs.mediaCategory.popular}
       />
 
-      <Box marginTop="-4rem" sx={{ ...uiConfigs.style.mainContent }}>
+      <Box
+        sx={{
+          ...uiConfigs.style.mainContent,
+        }}
+      >
         <Container header={t("popular movies")}>
           <MediaSlide
             mediaType={tmdbConfigs.mediaType.movie}
