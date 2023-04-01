@@ -4,6 +4,7 @@ import { Box, Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import MediaItem from "../components/common/MediaItem";
 import Container from "../components/common/Container";
 import uiConfigs from "../configs/ui.configs";
@@ -13,6 +14,7 @@ import { removeFavorite } from "../redux/features/userSlice";
 
 const FavoriteItem = ({ media, onRemoved }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [onRequest, setOnRequest] = useState(false);
 
@@ -27,7 +29,7 @@ const FavoriteItem = ({ media, onRemoved }) => {
     if (err) toast.error(err.message);
     if (response) {
       toast.success("Remove favorite success");
-      dispatch(removeFavorite({ favoriteId: media.id }));
+      dispatch(removeFavorite({ mediaId: media.id }));
       onRemoved(media.id);
     }
   };
@@ -44,7 +46,7 @@ const FavoriteItem = ({ media, onRemoved }) => {
         loading={onRequest}
         onClick={onRemove}
       >
-        remove
+        {t("remove")}
       </LoadingButton>
     </>
   );
@@ -57,6 +59,7 @@ const FavoriteList = () => {
   const [count, setCount] = useState(0);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const skip = 8;
 
@@ -94,7 +97,7 @@ const FavoriteList = () => {
 
   return (
     <Box sx={{ ...uiConfigs.style.mainContent }}>
-      <Container header={`Your favorites (${count})`}>
+      <Container header={`${t("Your favorites")} (${count})`}>
         <Grid container spacing={1} sx={{ marginRight: "-8px!important" }}>
           {filteredMedias.map((media, index) => (
             <Grid item xs={6} sm={4} md={3} key={index}>

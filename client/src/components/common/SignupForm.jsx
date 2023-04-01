@@ -8,9 +8,11 @@ import * as Yup from "yup";
 import userApi from "../../api/modules/user.api";
 import { setAuthModalOpen } from "../../redux/features/authModalSlice";
 import { setUser } from "../../redux/features/userSlice";
+import { useTranslation } from "react-i18next";
 
 const SignupForm = ({ switchAuthState }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [isLoginRequest, setIsLoginRequest] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -130,11 +132,11 @@ const SignupForm = ({ switchAuthState }) => {
         sx={{ marginTop: 4 }}
         loading={isLoginRequest}
       >
-        sign up
+        {t("sign up")}
       </LoadingButton>
 
       <Button fullWidth sx={{ marginTop: 1 }} onClick={() => switchAuthState()}>
-        sign in
+        {t("sign in")}
       </Button>
 
       {errorMessage && (

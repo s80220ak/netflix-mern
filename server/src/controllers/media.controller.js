@@ -10,8 +10,6 @@ const getList = async (req, res) => {
     const { language, page } = req.query;
     const { mediaType, mediaCategory } = req.params;
 
-    console.log(page);
-
     const response = await tmdbApi.mediaList({
       mediaType,
       mediaCategory,

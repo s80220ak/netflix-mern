@@ -12,8 +12,11 @@ import reviewApi from "../api/modules/review.api";
 import Container from "../components/common/Container";
 import uiConfigs from "../configs/ui.configs";
 import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
+import { useTranslation } from "react-i18next";
 
 const ReviewItem = ({ review, onRemoved }) => {
+  const { t } = useTranslation();
+
   const [onRequest, setOnRequest] = useState(false);
 
   const onRemove = async () => {
@@ -96,7 +99,7 @@ const ReviewItem = ({ review, onRemoved }) => {
         loading={onRequest}
         onClick={onRemove}
       >
-        remove
+        {t("remove")}
       </LoadingButton>
     </Box>
   );
@@ -109,6 +112,7 @@ const ReviewList = () => {
   const [count, setCount] = useState(0);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const skip = 2;
 
@@ -147,7 +151,7 @@ const ReviewList = () => {
 
   return (
     <Box sx={{ ...uiConfigs.style.mainContent }}>
-      <Container header={`Your reviews (${count})`}>
+      <Container header={`${t("Your reviews")} (${count})`}>
         <Stack spacing={2}>
           {filteredReviews.map((item) => (
             <Box key={item.id}>

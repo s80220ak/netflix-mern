@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import menuConfigs from "../../configs/menu.configs";
 import { setUser } from "../../redux/features/userSlice";
 import { useTranslation } from "react-i18next";
@@ -16,10 +16,15 @@ import { useTranslation } from "react-i18next";
 const UserMenu = () => {
   const { user } = useSelector((state) => state.user);
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleLogout = () => {
+    navigate("/");
+    dispatch(setUser(null));
+  };
 
   const toggleMenu = (e) => {
     return setAnchorEl(e.currentTarget);
@@ -62,7 +67,7 @@ const UserMenu = () => {
             ))}
             <ListItemButton
               sx={{ borderRadius: "10px" }}
-              onClick={() => dispatch(setUser(null))}
+              onClick={handleLogout}
             >
               <ListItemIcon>
                 <LogoutOutlinedIcon />
