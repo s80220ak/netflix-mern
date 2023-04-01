@@ -3,7 +3,7 @@ import publicClient from "../client/public.client.js";
 
 const mediaEndpoints = {
   list: ({ mediaType, mediaCategory, language, page }) =>
-    `${mediaType}/${mediaCategory}?language=${language}&?page=${page}`,
+    `${mediaType}/${mediaCategory}?language=${language}&page=${page}`,
   detail: ({ mediaType, mediaId, language }) =>
     `${mediaType}/detail/${mediaId}?language=${language}`,
   search: ({ mediaType, query, page }) =>

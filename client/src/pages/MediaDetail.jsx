@@ -64,7 +64,7 @@ const MediaDetail = () => {
     };
 
     getMedia();
-  }, [mediaType, mediaId, dispatch]);
+  }, [mediaType, mediaId, language, dispatch]);
 
   const onFavoriteClick = async () => {
     if (!user) return dispatch(setAuthModalOpen(true));
