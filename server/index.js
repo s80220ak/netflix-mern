@@ -6,16 +6,8 @@ import "dotenv/config";
 import routes from "./src/routes/index.js";
 
 const app = express();
-const corsOptions = {
-  origin: [
-    "https://netflix-mern-s80220ak.vercel.app/",
-    "http://localhost:3000",
-  ],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
