@@ -1,5 +1,5 @@
 const responseWithData = (res, statusCode, data) =>
-  res.status(statusCode).json(data);
+  res.set("Access-Control-Allow-Origin", "*").status(statusCode).json(data);
 
 const error = (res) =>
   responseWithData(res, 500, {
