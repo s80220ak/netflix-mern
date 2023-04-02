@@ -74,6 +74,7 @@ const FavoriteList = () => {
         setCount(response.length);
         setMedias([...response]);
         setFilteredMedias([...response].splice(0, skip));
+        console.log(filteredMedias);
       }
     };
 
