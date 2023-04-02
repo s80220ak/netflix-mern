@@ -58,6 +58,7 @@ const MediaDetail = () => {
         setMedia(response);
         setIsFavorite(response.isFavorite);
         setGenres(response.genres.splice(0, 2));
+        console.log(media);
       }
 
       if (err) toast.error(err.message);

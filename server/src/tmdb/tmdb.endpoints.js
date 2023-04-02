@@ -20,7 +20,7 @@ const tmdbEndpoints = {
     tmdbConfig.getURL(`${mediaType}/${mediaId}/recommendations`, { language }),
 
   mediaImages: ({ mediaType, mediaId, language }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}/images`, { language }),
+    tmdbConfig.getURL(`${mediaType}/${mediaId}/images`),
 
   mediaSearch: ({ mediaType, query, page }) =>
     tmdbConfig.getURL(`search/${mediaType}`, { query, page }),
