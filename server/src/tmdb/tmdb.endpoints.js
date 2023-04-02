@@ -14,7 +14,7 @@ const tmdbEndpoints = {
     tmdbConfig.getURL(`${mediaType}/${mediaId}/credits`, { language }),
 
   mediaVideos: ({ mediaType, mediaId, language }) =>
-    tmdbConfig.getURL(`${mediaType}/${mediaId}/videos`, { language }),
+    tmdbConfig.getURL(`${mediaType}/${mediaId}/videos`),
 
   mediaRecommend: ({ mediaType, mediaId, language }) =>
     tmdbConfig.getURL(`${mediaType}/${mediaId}/recommendations`, { language }),
