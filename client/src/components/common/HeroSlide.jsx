@@ -17,11 +17,9 @@ import { toast } from "react-toastify";
 
 import { setGlobalLoading } from "../../redux/features/globalLoadingSlice";
 import { routesGen } from "../../routes/routes";
-
-import uiConfigs from "../../configs/ui.configs";
-
 import CircularRate from "./CircularRate";
 
+import uiConfigs from "../../configs/ui.configs";
 import tmdbConfigs from "../../api/configs/tmdb.config";
 import genreApi from "../../api/modules/genre.api";
 import mediaApi from "../../api/modules/media.api";

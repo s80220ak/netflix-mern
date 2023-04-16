@@ -37,7 +37,7 @@ const PersonDetail = () => {
     };
 
     getPerson();
-  }, [personId]);
+  }, [personId, language, dispatch]);
 
   return (
     <>

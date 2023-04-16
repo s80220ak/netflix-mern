@@ -12,7 +12,7 @@ import favoriteApi from "../api/modules/favorite.api";
 import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
 import { removeFavorite } from "../redux/features/userSlice";
 
-const FavoriteItem = ({ media, onRemoved }) => {
+export const FavoriteItem = ({ media, onRemoved }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -74,7 +74,6 @@ const FavoriteList = () => {
         setCount(response.length);
         setMedias([...response]);
         setFilteredMedias([...response].splice(0, skip));
-        console.log(filteredMedias);
       }
     };
 

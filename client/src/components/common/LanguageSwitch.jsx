@@ -47,7 +47,7 @@ const LanguageSwitch = () => {
         variant="outlined"
         color="info"
         onClick={handleClick}
-        sx={{ minWidth: "1px", padding: "3px 5px" }}
+        sx={{ minWidth: "1px", padding: "3px 5px", marginLeft: "10px" }}
       >
         {currentLanguage}
       </Button>

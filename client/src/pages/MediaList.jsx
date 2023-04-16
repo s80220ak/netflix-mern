@@ -15,9 +15,9 @@ import { useTranslation } from "react-i18next";
 
 const MediaList = () => {
   const { t } = useTranslation();
+  const { language } = useSelector((state) => state.language);
   const { mediaType } = useParams();
   const dispatch = useDispatch();
-  const { language } = useSelector((state) => state.language);
 
   const [medias, setMedias] = useState([]);
   const [mediaLoading, setMediaLoading] = useState(false);
@@ -55,7 +55,14 @@ const MediaList = () => {
     };
 
     getMedias();
-  }, [mediaType, currentCategory, currentPage, mediaCategories, dispatch]);
+  }, [
+    mediaType,
+    currentCategory,
+    currentPage,
+    mediaCategories,
+    language,
+    dispatch,
+  ]);
 
   const onCategoryChange = (categoryIndex) => {
     if (currentCategory === categoryIndex) return;

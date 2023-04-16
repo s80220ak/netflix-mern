@@ -35,7 +35,10 @@ const MediaSearch = () => {
     }
   }, [mediaType, query, page]);
 
-  const onCategoryChange = (selectedCategory) => setMediaType(selectedCategory);
+  const onCategoryChange = (selectedCategory) => {
+    setMediaType(selectedCategory);
+    setPage(1);
+  };
 
   const onQueryChange = (e) => {
     const newQuery = e.target.value;

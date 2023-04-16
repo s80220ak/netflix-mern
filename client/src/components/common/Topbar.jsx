@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   AppBar,
   Box,
@@ -119,7 +120,10 @@ const Topbar = () => {
 
             {/* user menu */}
 
-            <Stack spacing={3} direction="row" alignItems="center">
+            <Stack direction="row" alignItems="center">
+              <IconButton component={Link} to="/search">
+                <SearchIcon />
+              </IconButton>
               <IconButton
                 sx={{ color: "inherit", display: { xs: "none", md: "flex" } }}
                 onClick={onSwitchTheme}
@@ -127,17 +131,19 @@ const Topbar = () => {
                 {themeMode === themeModes.dark && <DarkModeOutlinedIcon />}
                 {themeMode === themeModes.light && <WbSunnyOutlinedIcon />}
               </IconButton>
-              <LanguageSwitch />
-              {user ? (
-                <UserMenu />
-              ) : (
-                <Button
-                  variant="contained"
-                  onClick={() => dispatch(setAuthModalOpen(true))}
-                >
-                  {t("signin")}
-                </Button>
-              )}
+              <Stack spacing={2} direction="row" alignItems="center">
+                <LanguageSwitch />
+                {user ? (
+                  <UserMenu />
+                ) : (
+                  <Button
+                    variant="contained"
+                    onClick={() => dispatch(setAuthModalOpen(true))}
+                  >
+                    {t("signin")}
+                  </Button>
+                )}
+              </Stack>
             </Stack>
             {/* user menu */}
           </Toolbar>

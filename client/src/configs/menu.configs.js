@@ -25,12 +25,6 @@ const main = [
     icon: <LiveTvOutlinedIcon />,
     state: "tv",
   },
-  {
-    display: "search",
-    path: "/search",
-    icon: <SearchOutlinedIcon />,
-    state: "search",
-  },
 ];
 
 const user = [

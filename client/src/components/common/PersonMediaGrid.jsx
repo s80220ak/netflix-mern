@@ -33,7 +33,7 @@ const PersonMediaGrid = ({ personId }) => {
     };
 
     getMedias();
-  }, [personId]);
+  }, [personId, language]);
 
   const getReleaseDate = (media) => {
     const date =
