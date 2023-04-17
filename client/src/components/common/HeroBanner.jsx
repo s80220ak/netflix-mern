@@ -14,8 +14,6 @@ const HeroBanner = ({ mediaType, mediaCategory }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const [movies, setMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
   const [backdropPath, setBackdropPath] = useState(null);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ const HeroBanner = ({ mediaType, mediaCategory }) => {
       });
 
       if (response) {
-        setMovies(response.results);
         setBackdropPath(
           response.results[Math.floor(Math.random() * 20)].backdrop_path
         );
@@ -38,7 +35,7 @@ const HeroBanner = ({ mediaType, mediaCategory }) => {
     };
 
     getMedias();
-  }, [mediaType, mediaCategory, language, dispatch]);
+  }, [mediaType, mediaCategory, language]);
 
   return (
     <Box
@@ -56,7 +53,7 @@ const HeroBanner = ({ mediaType, mediaCategory }) => {
           width: "100%",
           height: "250px",
           backgroundImage:
-            "linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 79.17%)",
+            "linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 65%)",
           position: "absolute",
           bottom: "0",
           left: "0",
@@ -80,7 +77,7 @@ const HeroBanner = ({ mediaType, mediaCategory }) => {
           },
         }}
       >
-        <img src={tmdbConfigs.backdropPath(backdropPath)} />
+        <img src={tmdbConfigs?.backdropPath(backdropPath)} />
       </Box>
       <Box
         sx={{

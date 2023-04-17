@@ -41,7 +41,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
         page: 1,
       });
 
-      if (response) setMovies(response.results);
+      if (response) setMovies(response?.results);
       if (err) toast.error(err.message);
       dispatch(setGlobalLoading(false));
     };
@@ -54,7 +54,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
       });
 
       if (response) {
-        setGenres(response.genres);
+        setGenres(response?.genres);
 
         getMedias();
       }
@@ -92,7 +92,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
         style={{ width: "100%", height: "max-content" }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
-        {movies.map((movie, index) => (
+        {movies?.map((movie, index) => (
           <SwiperSlide key={index}>
             <Box
               sx={{
@@ -100,7 +100,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
                 backgroundPosition: "top",
                 backgroundSize: "cover",
                 backgroundImage: `url(${tmdbConfigs.backdropPath(
-                  movie.backdrop_Path || movie.poster_path
+                  movie?.backdrop_Path || movie?.poster_path
                 )})`,
               }}
             />

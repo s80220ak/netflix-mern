@@ -45,9 +45,9 @@ const MovieSlide = ({ mediaType, mediaCategory }) => {
         page: 1,
       });
 
-      const newMovies = [...response.results]
-        .sort((a, b) => (Math.random() > 0.5 ? -1 : 1))
-        .slice(0, 18);
+      const newMovies = [...response?.results]
+        ?.sort((a, b) => (Math.random() > 0.5 ? -1 : 1))
+        ?.slice(0, 18);
 
       if (response) {
         setMovies(response.results);
@@ -65,7 +65,7 @@ const MovieSlide = ({ mediaType, mediaCategory }) => {
       });
 
       if (response) {
-        setGenres(response.genres);
+        setGenres(response?.genres);
 
         getMedias();
       }
@@ -108,7 +108,7 @@ const MovieSlide = ({ mediaType, mediaCategory }) => {
           style={{ width: "1200px", height: "600px" }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
         >
-          {movies.map((movie, index) => (
+          {movies?.map((movie, index) => (
             <SwiperSlide key={index}>
               <Box
                 sx={{
@@ -117,7 +117,7 @@ const MovieSlide = ({ mediaType, mediaCategory }) => {
                   backgroundPosition: "top",
                   backgroundSize: "cover",
                   borderRadius: "10px",
-                  backgroundImage: `url(${tmdbConfigs.backdropPath(
+                  backgroundImage: `url(${tmdbConfigs?.backdropPath(
                     movie.backdrop_Path || movie.poster_path
                   )})`,
                 }}
